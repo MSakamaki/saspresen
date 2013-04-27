@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> pressen </title>
+<style>
+
+label.abs {
+	position	: absolute;
+	top			: 320px;
+	left 		: 330px;
+}
+canvas.abs {
+	background-color: rgba(255,255,255,0);
+	position	: absolute;
+	top			: 160px;
+	left 		: 330px;
+}
+
+</style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="js/libs/easeljs-0.5.0.min.js"></script>
+    <script src="js/libs/tweenjs-0.3.0.min.js"></script>
+    <script src="js/libs/movieclip-0.5.0.min.js"></script>
+    <script src="js/libs/preloadjs-0.2.0.min.js"></script>
+    <script src="js/libs/Filter.js"></script>
+    <script src="js/libs/ColorFilter.js"></script>
+    <script src="js/libs/particleEmitterJs-0.5.0.min.js"></script>
+	<script src="./js/presen.js"></script>
+</head>
+<body>
+
+	<table style="width : 510px">
+	<tr><td>
+	<iframe src="https://docs.google.com/presentation/d/15957TLKdDL9q0aPI-xSmrRNkCLXzVAIbU1FAMC6V3co/embed?start=false&loop=false&delayms=60000" 
+	frameborder="0" width="500" height="360" 
+	allowfullscreen="true" mozallowfullscreen="true" 
+	webkitallowfullscreen="true"></iframe>
+		<div style="text-align : right;">
+			<label class="abs" id="lblA" >只今の評価 [接続中...] へぇ </label>
+ 			<canvas id="particleEmitterCanvas" class="abs" width="200" height="200"></canvas>
+			<button id="btnReset" > 評価リセット（そのうち管理画面に）</button>
+			<!-- <button id="btnP" >ぱーてぃくる</button> -->
+		</div>
+	</td></tr></table>
+</body>
+</html>
