@@ -17,6 +17,7 @@ var hEvent = {
 			btn.attr("src", "./img/heeko.png");
 		});
 		btn.bind("vclick", function() {
+			console.log('hepush');
 			ws.send(JSON.stringify({
 				type : "hepush",
 				ip   : _ip
@@ -25,11 +26,4 @@ var hEvent = {
 	}
 };
 
-if (WebSocket){
-	$(document).ready(function() {
-		hEvent.init();
-		hEvent.setMousEvent('#btn_he');
-	});
-}else{ 
-	alert('お使いのブラウザではwebsocket対応しておりません');
-}
+exports.test = hEvent;

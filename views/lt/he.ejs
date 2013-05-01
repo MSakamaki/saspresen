@@ -5,8 +5,7 @@
  <title>
  <%= title %>
  </title>
- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" /> 
- <link href='http://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
 <style>
 p{
 font-family: 'Audiowide', cursive;	
@@ -17,8 +16,9 @@ img#btn_he {
 	height : 180px; 
 }
 </style>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
- <script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
 <script src="./js/he.js"></script>
 </head>
 <body>
@@ -27,7 +27,16 @@ img#btn_he {
 wellcome to hee button!
 </p>
 	<img id="btn_he" src="./img/heeko.png" />
-
-  </div>
+</div>
 </body>
+<script>
+if (WebSocket){
+	$(document).ready(function() {
+		hEvent.init();
+		hEvent.setMousEvent('#btn_he');
+	});
+}else{ 
+	alert('お使いのブラウザではwebsocket対応しておりません');
+}
+</script>
 </html>
