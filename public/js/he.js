@@ -1,53 +1,35 @@
 
-$(document).ready(function() {
-if ("WebSocket" in window) {
-	/* mobile event  */
-	$("#btn_he").bind("vmousedown", function() {
-		/*console.log("hedown");*/
-		$("#btn_he").attr("src", "./img/heekop.png");
-	});
-	$("#btn_he").bind("vmouseup", function() {
-		/*console.log("heup");*/
-		$("#btn_he").attr("src", "./img/heeko.png");
-	});
-
-	/* get client ip*/
-	var _ip ="";
-	$(function () {
+var hEvent = {
+	ws : null,
+	_ip : null,
+	init : function() { 
+		ws = new WebSocket('ws://lt.yamada3.org:8885/');
 		$.getJSON("http://jsonip.appspot.com?callback=?", function (data) {
 			_ip = String(data.ip);
 		});
-	});  
+	},
+	setMousEvent : function(btnId){
+		var btn = $(btnId);
+		btn.bind('vmousedown', function(){
+			btn.attr("src", "./img/heekop.png");
+		});
+		btn.bind("vmouseup", function() {
+			btn.attr("src", "./img/heeko.png");
+		});
+		btn.bind("vclick", function() {
+			ws.send(JSON.stringify({
+				type : "hepush",
+				ip   : _ip
+			}));
+		});
+	}
+};
 
-	/* websocket に接続する */
-	var ws = new WebSocket("ws://lt.yamada3.org:8885/");
-	ws.onerror = function(e){
-		console.log("onerror");
-	};
-	/*
-	ws.onopen = function(){
-		ws.send(JSON.stringify({
-			type : "open",
-			ip   : _ip 
-		}));
-	};*/
-
-	/* ボタン */
-	$("#btn_he").bind("vclick", function() {
-		console.log(_ip + " hello!");
-		ws.send(JSON.stringify({
-			type : "hepush",
-			ip   : _ip
-		}));
+if (WebSocket){
+	$(document).ready(function() {
+		hEvent.init();
+		hEvent.setMousEvent('#btn_he');
 	});
-
-	window.onbeforeunload = function () {
-		ws.send(JSON.stringify({
-		    type : "defect",
-		    ip   : _ip,
-		}));
-	};
-} else {
-	 alert ("お使いのブラウザはwesocketに対応していません");
+}else{ 
+	alert('お使いのブラウザではwebsocket対応しておりません');
 }
-});
