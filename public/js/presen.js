@@ -8,7 +8,7 @@ $(document).ready(function() {
 	var particleImage;  // the image to use for each particle
 	
 	var _ip = 'host';
-	var ws = new WebSocket('ws://lt.yamada3.org:8885/');
+	var ws = new WebSocket('ws://lt.yamada3.org:8887/');
 	ws.onmessage = function (event) {
 		var data = JSON.parse(event.data);
 		if (data.type == 'view') {

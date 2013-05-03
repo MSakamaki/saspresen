@@ -3,12 +3,14 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node app.js"
+		"start": "node hemain.js"
   },
   "dependencies": {
-    "express": "3.1.1",
-    "ejs": "*",
-  	"websocket.io": "*",
-	"mocha": "*"
+		"express": "3.1.1",
+		"ejs": "*",
+		"websocket.io": "*",
+		"socket.io-client" : "*",
+		"mocha": "*",
+		"chai" : "*"
   }
 }

@@ -10,7 +10,7 @@ var express = require('express')
 /* websocket関係 */
 var heCount= 0;
 var ws = require('websocket.io');
-var server = ws.listen(8885, function() {
+var server = ws.listen(8887, function() {
 	console.log('he server start ');
 });
 
@@ -32,7 +32,7 @@ server.on('connection', function(socket) {
 /*　ここからサーバー */
 var app = express();
 
-app.set('port', process.env.PORT || 8886);
+app.set('port', process.env.PORT || 80);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.use(express.favicon());

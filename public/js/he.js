@@ -1,12 +1,7 @@
-
 var hEvent = {
 	ws : null,
-	_ip : null,
 	init : function() { 
-		ws = new WebSocket('ws://lt.yamada3.org:8885/');
-		$.getJSON("http://jsonip.appspot.com?callback=?", function (data) {
-			_ip = String(data.ip);
-		});
+		ws = new WebSocket('ws://lt.yamada3.org:8887/');
 	},
 	setMousEvent : function(btnId){
 		var btn = $(btnId);
@@ -19,11 +14,8 @@ var hEvent = {
 		btn.bind("vclick", function() {
 			console.log('hepush');
 			ws.send(JSON.stringify({
-				type : "hepush",
-				ip   : _ip
+				type : "hepush"
 			}));
 		});
 	}
 };
-
-exports.test = hEvent;
