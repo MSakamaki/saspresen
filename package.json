@@ -1,5 +1,5 @@
 {
-  "name": "application-name",
+  "name": "he-pusher",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -12,5 +12,5 @@
 		"socket.io-client" : "*",
 		"mocha": "*",
 		"chai" : "*"
-  }
+	}
 }

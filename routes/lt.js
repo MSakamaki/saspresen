@@ -17,3 +17,6 @@ exports.hesoundmobile = function(req, res){
     res.render('lt/hesoundmobile');
 };
 
+exports.endroll = function(req, res){
+    res.render('lt/endroll');
+};

@@ -50,6 +50,7 @@ app.get('/he', lt.he);
 app.get('/presen',lt.presen);
 app.get('/heSound',lt.hesound);
 app.get('/hesoundmobile',lt.hesoundmobile);
+app.get('/endroll', lt.endroll);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
