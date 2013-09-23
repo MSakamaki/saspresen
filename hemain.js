@@ -21,9 +21,16 @@ server.on('connection', function(socket) {
 		if (data.type == 'hepush'){
 			heCount++;
 			server.clients.forEach(function(client) {
-				if ( client != null) {
-					client.send(JSON.stringify({ type : 'view', hCnt : heCount }));
+				if ( client ) {
+					try {
+						client.send(JSON.stringify({ type : 'view', hCnt : heCount }));i
+					}catch(e) {
+						console.log('error');
+						console.log(e);
+						client = null;
+					}
 				}});
+			console.log('servers:' + server.clients.length);
 		} else if (data.type == 'resetCnt') {
 			heCount=0;
 		}
