@@ -1,8 +1,8 @@
 var hEvent = {
 	ws : null,
-	init : function() { 
-		ws = new WebSocket('ws://lt.yamada3.org:8887/');
-	},
+	init : function(server, port) {
+		ws = new WebSocket('ws://' + server + ':' + port + '/');
+},
 	setMousEvent : function(btnId){
 		var btn = $(btnId);
 		btn.bind('vmousedown', function(){

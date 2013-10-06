@@ -9,8 +9,9 @@ body, html
 	font-family: "Droid Sans", arial, verdana, sans-serif;
 	font-weight: 700;
 	color: #ff6;
-	background-color: #000;
+/*	background-color: #000; */
 	overflow: hidden;
+  background-image: url("../img/endback.jpg");
 }
 
 p#start

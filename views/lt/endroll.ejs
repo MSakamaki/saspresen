@@ -6,13 +6,15 @@
 	<link rel="stylesheet" href="./style/endroll.css" type="text/css" />
 	<script type="text/javascript" src="../js/endroll.js"></script>
 </head>
-<body>
+<body >
 <p id="start">おわりに</p>
 <h1>
 	<p>ソリューション</p>
 	<p>システム部</p>
 	<sub>使用した技術とか・・・</sub>
 </h1>
+
+<script type="text/javascript" src="js/endroll.js"></script>
 
 <div id="titles"><div id="titlecontent">
 
@@ -21,44 +23,90 @@
 	<p></p>
 
 
-<p>・aws EC2 (amazon web service)</p>
-<p>・aws LB</p>
-<p>・HTML5</p>
-<p>→ Web Socket</p>
-<p>http://www.w3.org/TR/websockets/</p>
-<p>→ Web Audio</p>
-<p>http://www.w3.org/TR/webaudio/</p>
-<p>→ ...</p>
+<p></p>
+
+<p>[スライド画面]</p>
+<p>Google Drive(Google Slide)</p>
+<p>今回発表の本体部、同時に多人数で編集でき、さらにはネットワーク上から編集できるためメンバーが集まらなくてもスライドの編集ができ、連携ができるのが魅力</p>
+<p>&nbsp;&nbsp;http://www.google.com/intl/ja/drive/apps.html</p>
+
+<p>・Create.js</p>
+<p>評価時情報の連携で使う、２次元でCanvasを操作する場合はこのフレームワークが最適、3D描画にする場合はTreeJS（WebGL）がオススメ</p>
+<p>http://www.createjs.com/#!/Create</p>
+
+
+<p>ParticleEmitterJS</p>
+<p>CreateJS機能の一部、パーティクル描画を容易に記述することができるJavaScriptフレームアーク</p>
+<p>http://purplemonkeystudios.org/?page_id=9</p>
+<p>http://purplemonkeystudios.org/?page_id=13</p>
+
+<p>[Web評価ボタン]</p>
 <p>・jQuery</p>
 <p>・jQuery Mobile</p>
+<p>ラムダ式ベースのJavaScriptライブラリ、javascriptでライトな記述が可能となるが、これに依存しすぎると本家JavaScriptが書けなくなるので注意</p>
+<p>http://jquery.com/</p>
+<p>http://jquerymobile.com/</p>
+
 <p>・Google Web Font</p>
+<p>Webフォントと呼ばれる技術、クライアントにフォントがインストールされていなくとも、特殊な書体の文字を簡単に書くことができる仕組み</p>
 <p>http://www.google.com/fonts/</p>
+
+<p>[Web評価ボタン（音声版）]</p>
+<p>Web Audio（preloadjs）（SoundJS）</p>
+<p>サウンド系はH264かWebMかで実装方式や用意するmp3を考えなければならなかったが、最近はOpera以外H.264のようなので一安心・・・と思いきや
+GoogleさんはWebMにすると言ってたりする未だにちょっと大変だったりする部分</p>
+<p>http://www.w3.org/TR/webaudio/</p>
+<p></p>
+<p>・へぇ子ちゃん(スペシャル★さんくす)</p>
+
+
+<p>[end credit roll(この画面)]</p>
+<p>・CSS3 Animation</p>
+<p>過去色々なCSS3のアニメーション描画処理定義はこのひとつにまとまった、
+しかしながらアニメーションの描画はCSS3、Canvas、SVG、最近ではWebGLも出てきたのでどのような場合に何を適用すべきかといのが
+結構難しいお話になってはいたりする。</p>
+<p>まぁ下手に頭悩ませるよりFlashでいいよねと言われたりする現状</p>
+<p>http://www.w3.org/TR/css3-animations/</p>
+
+<p>[ばっくぐらうんど]</p>
+<p>・aws EC2 (amazon web service)</p>
+<p>・aws LB</p>
+<p>[HTML5]Web Socket</p>
+<p>http://www.w3.org/TR/websockets/</p>
 <p>・Node.js</p>
 <p>・Node.js .Forever</p>
 <p>・Node.js express</p>
+<p>・socket-io-client</p>
+<p>・ejsにてrestWebSite化</p>
+<p>・mongoDB(へぇ評価集計)</p>
+<p>・Fusion Table(へぇ評価集計)</p>
+<p>https://github.com/dbamber/node-google-sql</p>
+
+
+
+<p>[Others(その他)]</p>
+<p>Google Drive(Google Docs,Splet Sheets)</p>
+<p>議事録に使用</p>
+<p>&nbsp;&nbsp;http://www.google.com/intl/ja/drive/apps.html</p>
 <p>・mocha(behavior driven development)</p>
 <p>・chai</p>
-<p>・socket-io-client</p>
 <p>・git</p>
 <p>・gitolite</p>
 <p>・gitlab</p>
 <p>・gitlab CI</p>
 <p>・mySQL</p>
-<p>・Create.js</p>
-<p>http://www.createjs.com/#!/Create</p>JS
-<p>→preloadjs</p>
-<p>→SoundJS</p>
-<p>→ParticleEmitterJS</p>
-<p>http://purplemonkeystudios.org/?page_id=9</p>
-<p>http://purplemonkeystudios.org/?page_id=13</p>
-<p>・へぇ子ちゃん</p>
-<p>・ejsにてrestWebSite化</p>
-<p>＠備忘録（もといやりたいこと）</p>
-<p>・websocket未対応ブラウザ対応</p>
-<p>・へぇ評価をタイムライン（スライド毎？）に集計し、表示するタイミングは未定</p>
-<p>・Canvas (へぇ評価をもっとアニメーションさせる)</p>
-<p>・CSS3 Animation (上記と同じ)</p>
-<p>・mongoDB(へぇ評価集計)</p>
+
+<p>[スペシャルさんくす]</p>
+<p>全体講習チーム</p>
+<p>ソリューションチーム</p>
+<p></p>
+<p></p>
+<p></p>
+
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
 
 
 </div></div>

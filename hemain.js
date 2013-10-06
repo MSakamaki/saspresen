@@ -7,6 +7,11 @@ var express = require('express')
   , path = require('path')
 ;
 
+var serverInfo ={
+	ip : 'localhost',
+	port : '80'
+};
+
 /* websocket関係 */
 var heCount= 0;
 var ws = require('websocket.io');
@@ -22,15 +27,12 @@ server.on('connection', function(socket) {
 			heCount++;
 			server.clients.forEach(function(client) {
 				if ( client ) {
-					try {
-						client.send(JSON.stringify({ type : 'view', hCnt : heCount }));i
-					}catch(e) {
-						console.log('error');
-						console.log(e);
-						client = null;
+					try{
+						client.send(JSON.stringify({ type : 'view', hCnt : heCount }));
+					}catch(e){
+						console.log('err:' + e);
 					}
 				}});
-			console.log('servers:' + server.clients.length);
 		} else if (data.type == 'resetCnt') {
 			heCount=0;
 		}
@@ -58,6 +60,7 @@ app.get('/presen',lt.presen);
 app.get('/heSound',lt.hesound);
 app.get('/hesoundmobile',lt.hesoundmobile);
 app.get('/endroll', lt.endroll);
+app.get('/console', lt.console);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

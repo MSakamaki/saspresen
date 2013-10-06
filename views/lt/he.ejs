@@ -32,7 +32,7 @@ wellcome to hee button!
 <script>
 if (WebSocket){
 	$(document).ready(function() {
-		hEvent.init();
+		hEvent.init('<%=server %>', '<%=port %>');
 		hEvent.setMousEvent('#btn_he');
 	});
 }else{ 

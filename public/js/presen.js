@@ -8,7 +8,7 @@ $(document).ready(function() {
 	var particleImage;  // the image to use for each particle
 	
 	var _ip = 'host';
-	var ws = new WebSocket('ws://lt.yamada3.org:8887/');
+	var ws = new WebSocket('ws://' + server + ':' + port + '/');
 	ws.onmessage = function (event) {
 		var data = JSON.parse(event.data);
 		if (data.type == 'view') {
@@ -113,3 +113,9 @@ $(document).ready(function() {
 		addParticleEmitter(canvas.width / 2, canvas.height * 3 / 4);
 	});*/
 });
+var server,
+	port;
+function init(_server, _port){
+	server = _server;
+	port = _port;
+};
