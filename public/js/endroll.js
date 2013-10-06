@@ -1,18 +1,20 @@
 var context;
-window.addEventListener('load', init, false);
-function init() {
+//window.addEventListener('load', init, false);
+function init(server,port) {
 	try {
 		context = new webkitAudioContext();
 	}catch(e) {
 		alert('Web Audio API is not supported in this browser');
 	}
 	
-	loadDogSound('http://localhost/sound/sw.mp3');
+	loadDogSound('http://' + server + '/sound/sw.mp3');
 	//playSound(dogBarkingBuffer);
 }
 var dogBarkingBuffer = null;
 
 function loadDogSound(url) {
+
+console.log('rul' + url);
 	var request = new XMLHttpRequest();
 	request.open('GET', url, true);
 	request.responseType = 'arraybuffer';
