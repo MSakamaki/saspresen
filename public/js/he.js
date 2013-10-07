@@ -31,7 +31,7 @@ var hEvent = {
 		yoImg.src='img/yoda.jpg';
 		var refresh = function(){
 			ctHee.drawImage(yoImg
-				,0,0,yoImg.naturalWidth / 2,yoImg.naturalHeight / 2
+				,0,0,yoImg.naturalWidth ,yoImg.naturalHeight /2 
 				//,0,0,yoImg.naturalHeight,yoImg.naturalWidth
 				//,0,0,$(window).width() / 5 ,$(window).height() / 5
 				);
@@ -39,7 +39,7 @@ var hEvent = {
 				btn.height($(window).height());
 		}
 		var pushHe =function(){
-			ctHee.fillText('フォースじゃ・・・', 10, ($(window).width() / 15));
+			ctHee.fillText('フォースじゃ・・・', 10, ($(window).width() / 25));
 			setTimeout(refresh,1000);
 		}
 		yoImg.onload=refresh;
