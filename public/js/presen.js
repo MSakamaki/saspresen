@@ -7,14 +7,17 @@ $(document).ready(function() {
 	var fpsLabel;       // label to show the current frames per second
 	var particleImage;  // the image to use for each particle
 	
+
 	var _ip = 'host';
 	var ws = new WebSocket('ws://' + server + ':' + port + '/');
 	ws.onmessage = function (event) {
 		var data = JSON.parse(event.data);
 		if (data.type == 'view') {
 			var base = document.getElementById('lblA');
-			base.innerHTML = "只今の評価 " + data.hCnt + " へぇ";
+			base.innerHTML = data.hCnt;
 			addParticleEmitter(canvas.width / 2, canvas.height * 3 / 4);
+			ctHee.drawImage(hesImg, 0, 0);
+			setTimeout(hemoto, 500);
 		} 
 	};
 
@@ -46,6 +49,21 @@ $(document).ready(function() {
 	/* 10秒毎にハートビート送信 */
 	setTimeout("heartBeat()", 10000);
 
+	/*へぇ子描画*/
+	var cHee = document.getElementById('heeko');
+	var ctHee = cHee.getContext('2d');
+	var heeImg = new Image();
+	var hesImg = new Image();
+	heeImg.src = 'img/heekop.png';
+	hesImg.src = 'img/heeos.png';
+	heeImg.onload = function() {
+		ctHee.drawImage(heeImg, 0, 0);
+	}
+	/* もとに戻す */
+	var hemoto = function(){
+		ctHee.clearRect(0, 0, canvas.width, canvas.height);
+		ctHee.drawImage(heeImg, 0, 0);
+	}
 
 	/* パーティクル処理 */
 	particleImage = new Image();

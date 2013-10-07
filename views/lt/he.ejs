@@ -7,13 +7,22 @@
  </title>
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
 <style>
-p{
-font-family: 'Audiowide', cursive;	
+body{
+	margin: 0px;
+	padding: 0px;
+	position: relative;
 }
 
-img#btn_he {
-	width  : 140px;
-	height : 180px; 
+body #wrapper{
+	width: 100%;
+	height: 100%;
+	position: fixed;
+}
+
+
+p{
+	font-family: 'Audiowide', cursive;	
+	position : absolute;
 }
 </style>
 
@@ -22,11 +31,11 @@ img#btn_he {
 <script src="./js/he.js"></script>
 </head>
 <body>
-  <div id="base">
+  <div id="wrapper">
 <p>
 wellcome to hee button!
 </p>
-	<img id="btn_he" src="./img/heeko.png" />
+	<canvas id="btn_he"></canvas>
 </div>
 </body>
 <script>

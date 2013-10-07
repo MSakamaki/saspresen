@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title> pressen </title>
+	<link href='http://fonts.googleapis.com/css?family=Bubbler+One' rel='stylesheet' type='text/css'>
 <style>
 
 body {
@@ -10,16 +11,22 @@ body {
 
 label.abs {
 	position	: absolute;
-	bottom			: 50px;
-	right 			: 40px;
-	background-color: #FFFFFF;
+	top			: 186px;
+	right 		: 100px;
+	background-color: igba(255,255,255,0);
+	font-family: 'Bubbler One', sans-serif;
+	color : #FFFF55;
+	font-size : 30px;
+	font-weight: bold;
 }
 canvas.abs {
 	background-color: rgba(255,255,255,0);
 	position	: absolute;
-	bottom		: 40px;
+	top		: 40px;
 	right		: 10px;
 }
+
+
 
 </style>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -45,10 +52,9 @@ canvas.abs {
 	webkitallowfullscreen="true"></iframe>
 -->
 <div style="text-align : right;">
-			<label class="abs" id="lblA" >只今の評価 [接続中...] へぇ </label>
+ 			<canvas id="heeko" class="abs" width="180" height="225"></canvas>
  			<canvas id="particleEmitterCanvas" class="abs" width="200" height="200"></canvas>
-			<button id="btnReset" > 評価リセット（そのうち管理画面に）</button>
-			<!-- <button id="btnP" >ぱーてぃくる</button> -->
+			<label class="abs" id="lblA" >0</label>
 		</div>
 </body>
 <script type="text/javascript">
