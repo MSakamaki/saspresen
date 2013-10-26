@@ -11,7 +11,7 @@ body, html
 	color: #ff6;
 /*	background-color: #000; */
 	overflow: hidden;
-  background-image: url("../img/endback.jpg");
+	background-image: url("../img/endback.jpg");
 }
 
 p#start
@@ -24,8 +24,8 @@ p#start
 	color: #4ee;
 	opacity: 0;
 	z-index: 1;
-	-webkit-animation: intro 2s ease-out;
-	animation: intro 2s ease-out;
+	-webkit-animation: intro 8s ease-out;
+	animation: intro 8s ease-out;
 }
 
 @-webkit-keyframes intro {
@@ -55,8 +55,8 @@ h1
 	text-shadow: -2px -2px 0 #ff6, 2px -2px 0 #ff6, -2px 2px 0 #ff6, 2px 2px 0 #ff6;
 	opacity: 0;
 	z-index: 1;
-	-webkit-animation: logo 5s ease-out 2.5s;
-	animation: logo 5s ease-out 2.5s;
+	-webkit-animation: logo 4s ease-out 8.5s;
+	animation: logo 4s ease-out 8.5s;
 }
 
 h1 sub
@@ -69,13 +69,13 @@ h1 sub
 
 @-webkit-keyframes logo {
 	0% { -webkit-transform: scale(1); opacity: 1; }
-	50% { opacity: 1; }
+	90% { opacity: 1; }
 	100% { -webkit-transform: scale(0.1); opacity: 0; }
 }
 
 @keyframes logo {
 	0% { transform: scale(1); opacity: 1; }
-	50% { opacity: 1; }
+	90% { opacity: 1; }
 	100% { transform: scale(0.1); opacity: 0; }
 }
 

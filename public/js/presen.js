@@ -9,46 +9,48 @@ $(document).ready(function() {
 	
 
 	var _ip = 'host';
-	var ws = new WebSocket('ws://' + server + ':' + port + '/');
-	ws.onmessage = function (event) {
-		var data = JSON.parse(event.data);
-		if (data.type == 'view') {
-			var base = document.getElementById('lblA');
-			base.innerHTML = data.hCnt;
-			addParticleEmitter(canvas.width / 2, canvas.height * 3 / 4);
-			ctHee.drawImage(hesImg, 0, 0);
-			setTimeout(hemoto, 500);
-		} 
-	};
+	var ws;
+	$.get('conf/conf.json',function(data){
+		ws = new WebSocket('ws://' + data[0].server + ':' + data[0].port + '/');
+		ws.onmessage = function (event) {
+			var data = JSON.parse(event.data);
+			if (data.type == 'view') {
+				var base = document.getElementById('lblA');
+				base.innerHTML = data.hCnt;
+				addParticleEmitter(canvas.width / 2, canvas.height * 3 / 4);
+				ctHee.drawImage(hesImg, 0, 0);
+				setTimeout(hemoto, 500);
+			} 
+		};
 
-	$("#btnReset").bind("click", function() {
-		ws.send(JSON.stringify({
-			type : 'resetCnt',
-			ip   : _ip 
-		}));
+		$("#btnReset").bind("click", function() {
+			ws.send(JSON.stringify({
+				type : 'resetCnt',
+				ip   : _ip 
+			}));
+		});
+
+		/* init */
+		ws.onopen = function () {
+			ws.send(JSON.stringify({
+				type : 'plessenAccess',
+				ip   : _ip
+			}));
+		}
+
+		heartBeat = function() {
+			console.log('ws' + ws);
+			if(ws.readyState == 3){
+				console.log('closed connection');
+			} else if (ws.readyState == 1) {
+				console.log('push heartbeat');
+				ws.send(JSON.stringify({ type : 'heartbeat', ip : _ip }));
+				setTimeout("heartBeat()", 10000);
+			}	
+		}
+		/* 10秒毎にハートビート送信 */
+		setTimeout("heartBeat()", 10000);
 	});
-
-	/* init */
-	ws.onopen = function () {
-		ws.send(JSON.stringify({
-			type : 'plessenAccess',
-			ip   : _ip
-		}));
-	}
-
-	heartBeat = function() {
-		console.log('ws' + ws);
-		if(ws.readyState == 3){
-			console.log('closed connection');
-		} else if (ws.readyState == 1) {
-			console.log('push heartbeat');
-			ws.send(JSON.stringify({ type : 'heartbeat', ip : _ip }));
-			setTimeout("heartBeat()", 10000);
-		}	
-	}
-	/* 10秒毎にハートビート送信 */
-	setTimeout("heartBeat()", 10000);
-
 	/*へぇ子描画*/
 	var cHee = document.getElementById('heeko');
 	var ctHee = cHee.getContext('2d');
@@ -131,9 +133,3 @@ $(document).ready(function() {
 		addParticleEmitter(canvas.width / 2, canvas.height * 3 / 4);
 	});*/
 });
-var server,
-	port;
-function init(_server, _port){
-	server = _server;
-	port = _port;
-};

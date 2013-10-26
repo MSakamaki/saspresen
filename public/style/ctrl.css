@@ -1,0 +1,39 @@
+div.fbtn {
+  text-align: center;
+  width: 150px;
+  height: 24px;
+  padding-top: 5px;
+  border-radius: 5px;
+  background-color: #c8c8c8;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #e6e6e6;
+  border-bottom-color: #646464;
+  border-right-color: #646464;
+}
+div.fbtn:hover {
+  text-align: center;
+  width: 150px;
+  height: 24px;
+  padding-top: 5px;
+  border-radius: 5px;
+  background-color: #e1e1e1;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #e6e6e6;
+  border-bottom-color: #646464;
+  border-right-color: #646464;
+}
+div.fbtn:active {
+  text-align: center;
+  width: 150px;
+  height: 24px;
+  padding-top: 5px;
+  border-radius: 5px;
+  background-color: #646464;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #e6e6e6;
+  border-bottom-color: #646464;
+  border-right-color: #646464;
+}

@@ -1,0 +1,47 @@
+
+// ボタンカラー
+$c_nml:rgba(200,200,200,1);
+$c_hov:rgba(225,225,225,1);
+$c_act:rgba(100,100,100,1);
+// ボタンの縁(左上)
+$c_add_b:rgb(30,30,30);
+// ボタンの縁(右下)
+$c_add_bb:rgb(100,100,100);
+
+// button dizine
+@mixin btnBase($w:150px, $h:24px, $pTop:5px, $b_rdus:5px){
+	text-align:center;
+	width:$w;
+	height:$h;
+	padding:{
+		top:$pTop;
+	}
+	border:{	
+		radius:$b_rdus;
+	}
+}
+// button color
+@mixin btnBColor($btn_c:rgb(255,255,255), $btn_cb:$c_add_b, $btn_cbb:$c_add_bb){
+	background-color:$btn_c;
+	border:{
+		width:1px;
+		style:solid;
+		color:$c_nml + $c_add_b;
+		bottom:{ color:$c_nml - $c_add_bb;}
+		right:{ color:$c_nml - $c_add_bb;}
+	}
+}
+
+
+div.fbtn {
+	@include btnBase;
+	@include btnBColor($c_nml);
+	&:hover {
+		@include btnBase;
+		@include btnBColor($c_hov);
+	}
+	&:active {
+		@include btnBase;
+		@include btnBColor($c_act);
+	}
+}

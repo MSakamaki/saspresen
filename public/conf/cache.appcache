@@ -1,0 +1,11 @@
+CACHE MANIFEST
+# 2013-06-18:v2
+
+# Explicitly cached 'master entries'.
+CACHE:
+../sound/sw.mp3
+../img/endback.jpg
+
+# Resources that require the user to be online.
+NETWORK:
+*

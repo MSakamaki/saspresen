@@ -1,12 +1,8 @@
-var _host = 'localhost',
-	_port = 8887;
 
 
 exports.he = function(req, res){
  res.render('lt/he', { 
- 	title: 'へぇボタン画面',
-	server : _host,
-	port : _port
+ 	title: 'へぇボタン画面'
 	});
 };
 
@@ -15,10 +11,7 @@ exports.console = function(req, res){
 };
 
 exports.presen = function(req, res){
-	res.render('lt/presen', { 
-		server : _host,
-		port : _port
-	});
+	res.render('lt/presen');
 };
 
 exports.hesound  = function(req, res){
@@ -30,8 +23,9 @@ exports.hesoundmobile = function(req, res){
 };
 
 exports.endroll = function(req, res){
-    res.render('lt/endroll', {
-		server : _host,
-		port : _port
-	});
+    res.render('lt/endroll');
 };
+
+exports.console=function(req, res){
+	res.render('lt/console');
+}

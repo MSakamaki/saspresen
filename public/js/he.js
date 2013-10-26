@@ -1,7 +1,9 @@
 var hEvent = {
 	ws : null,
 	init : function(server, port) {
-		ws = new WebSocket('ws://' + server + ':' + port + '/');
+		$.get('conf/conf.json',function(data){
+			ws = new WebSocket('ws://' + data[0].server + ':' + data[0].port + '/');
+		});
 },
 	setMousEvent : function(btnId){
 		var btn = $(btnId);
