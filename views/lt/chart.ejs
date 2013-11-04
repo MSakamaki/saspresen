@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>charts</title>
+    <script type="text/javascript" src="/bower_components/jquery/jquery.js"></script>
+    <script type="text/javascript" src="/bower_components/jqplot/jquery.jqplot.js"></script>
+    <script type="text/javascript" src="/bower_components/jqplot/plugins/jqplot.pieRenderer.js"></script>
+    <script type="text/javascript" src="/bower_components/jqplot/plugins/jqplot.dateAxisRenderer.min.js"></script>
+    <script type="text/javascript" src="/bower_components/jqplot/plugins/jqplot.canvasTextRenderer.min.js"></script>
+    <script type="text/javascript" src="/bower_components/jqplot/plugins/jqplot.canvasAxisTickRenderer.min.js"></script>
+    <script type="text/javascript" src="/bower_components/jqplot/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+    <script type="text/javascript" src="/bower_components/jqplot/plugins/jqplot.barRenderer.min.js"></script>
+    <script type="text/javascript" src="/bower_components/angular/angular.js"></script>
+    <script type="text/javascript" src="/bower_components/angular-ui-chart/src/chart.js"></script>
+</head >
+<body>
+<section ng-app="myChartingApp" ng-controller="DemoCtrl">
+    <div ui-chart="someData" chart-options="myChartOpts" ></div>
+    <div ui-chart="someData" chart-options="myBarObts" ></div>
+</section>
+
+<script>
+    angular.module('myChartingApp', ['ui.chart'])
+            .config(function($httpProvider){
+                delete $httpProvider.defaults.headers.common['X-Requested-With'];
+            }).value('charting', {
+                pieChartOptions: {
+                    seriesDefaults: {
+                        renderer: jQuery.jqplot.PieRenderer,
+                        rendererOptions: {
+                            showDataLabels: true
+                        }
+                    },
+                    legend: { show:true, location: 'e' }
+                },
+                barChartOptions: {
+                    seriesDefaults: {
+                        renderer: jQuery.jqplot.BarRenderer,
+                        rendererOptions: {
+                            showDataLabels: true
+                        }
+                    },
+                    axesDefaults: {
+                        tickRenderer: $.jqplot.CanvasAxisTickRenderer ,
+                        tickOptions: {
+                            angle: 0,
+                            fontSize: '10pt'
+                        }
+                    },
+                    axes: {
+                        xaxis: {
+                            renderer: $.jqplot.CategoryAxisRenderer
+                        }
+                    }
+                }
+            })
+            .controller('DemoCtrl', function ($scope, $http ,charting) {
+                //'http://localhost:8886/g').get();
+                $http({method: 'GET', url: 'http://localhost:8886/g'}).
+                        success(function(data, status, headers, config) {
+                            var gdata = [[]];
+                            data.forEach(function(item){
+                                var jitem = JSON.parse(item);
+                                gdata[0].push(['section' + jitem.sect, jitem.point]);
+                            });
+
+                            $scope.someData = gdata;
+                        }).
+                        error(function(data, status, headers, config) {
+                            console.log('error',data, status, headers, config);
+                        });
+
+                $scope.someData = [[
+                    ['INIT 1', 10],
+                    ['INIT 2', 10]
+                ]];
+
+                $scope.myChartOpts = charting.pieChartOptions;
+                $scope.myBarObts = charting.barChartOptions;
+            });
+</script>
+</body>
+</html>

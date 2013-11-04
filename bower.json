@@ -1,0 +1,9 @@
+{
+  "name": "hepresen",
+  "version": "0.0.1",
+  "main": "hepresen.js",
+  "license": "MIT",
+  "dependencies" : {
+    "angular-ui-chart": "latest"
+  }
+}

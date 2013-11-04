@@ -29,3 +29,7 @@ exports.endroll = function(req, res){
 exports.console=function(req, res){
 	res.render('lt/console');
 }
+
+exports.chart=function(req, res){
+    res.render('lt/chart');
+}

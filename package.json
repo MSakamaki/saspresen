@@ -12,6 +12,7 @@
 		"socket.io-client" : "*",
 		"mocha": "*",
 		"chai" : "*",
+		"restify" : "*",
 		"mongoose" : "3.X"
 	}
 }

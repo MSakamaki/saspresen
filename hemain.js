@@ -1,6 +1,7 @@
 
 var express = require('express')
   , routes = require('./routes')
+  , restify = require('restify')
   , user = require('./routes/user')
   , lt    = require('./routes/lt')
   , http = require('http')
@@ -27,9 +28,10 @@ var ws = require('websocket.io');
 var server = ws.listen(8887, function() {
 	console.log('he server start ');
 });
+/*
 var grf= ws.listen(8886, function() {
 	console.log('he server grf start ');
-});
+});*/
 
 server.on('connection', function(socket) {
 	socket.on('message', function(data) {
@@ -45,15 +47,6 @@ server.on('connection', function(socket) {
 						console.log('err:' + e);
 					}
 				}});
-			try {
-				grf.clients.forEach(function(client){
-					getGdata(function(_data){
-						client.send(JSON.stringify({type:'graph', data:_data }));
-					});
-					
-					//client.send(JSON.stringify({type:'graph', data: getGdata()}));
-				});
-			} catch(e){console.log(e)}
 		} else if (data.type == 'console'){
 			/* console mode */
 			var dtt=data.ctrl;
@@ -94,12 +87,6 @@ var cntUp=function(){
 	heUpd(section, cnt.sect);
 };
 
-grf.on('connection', function(socket) {
-	socket.on('message', function(data) {
-		console.log('getMsg:' + data);	
-	});
-});
-
 /*　ここからサーバー */
 var app = express();
 
@@ -123,6 +110,7 @@ app.get('/heSound',lt.hesound);
 app.get('/hesoundmobile',lt.hesoundmobile);
 app.get('/endroll', lt.endroll);
 app.get('/console', lt.console);
+app.get('/chart', lt.chart);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
@@ -180,3 +168,31 @@ var getGdata=function(fnc){
 		fnc(item);
 	});
 }
+
+/* REST module*/
+var restServer = restify.createServer();
+restServer.use(
+    function crossOrigin(req,res,next){
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "X-Requested-With");
+        return next();
+    }
+);
+
+restServer.get('/g', function(req, res, next){
+    getGdata(function(_data){
+        var data =[];
+        _data.forEach(function(item){
+            if (item.sect){
+                data.push(JSON.stringify({ point :item.point, sect : item.sect }));
+            }
+        });
+        //console.log('data:',data);
+        res.send(data);
+        //res.send(JSON.stringify({type:'graph', data:data }));
+    });
+});
+
+restServer.listen(8886, function() {
+    console.log('listening at ', restServer.name, restServer.url);
+});
