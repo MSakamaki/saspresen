@@ -3,5 +3,5 @@ dist
 .tmp
 .sass-cache
 .idea
-public/bower_component
+public/bower_components/
 

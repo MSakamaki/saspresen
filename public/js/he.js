@@ -7,8 +7,8 @@ var hEvent = {
 			ws = new WebSocket('ws://' + data[0].server + ':' + data[0].port + '/');
 		});
         imgSet=[
-            {img:'img/conoha.jpg',msg:'VPS is From now very fun!'},  // 0
-            {img:'img/anzu.jpg',msg:'VPS is From now very fun!'},    // 1
+            {img:'img/conoha.jpg',msg:'VPS is From now', msg2:' very fun!'},  // 0
+            {img:'img/anzu.jpg',msg:'VPS is From now', msg2:' very fun!'},    // 1
             {img:'img/yoda.jpg',msg:'Don\'t think... feel...'},    // 2
             {img:'img/cloudia.jpg',msg:'Azure is cloud platform',msg2:'built for you.'}, // 3
             {img:'img/fox.png',msg:'firefoxOS for best of',msg2:' the mobile web'},     // 4
@@ -61,7 +61,7 @@ var hEvent = {
 				// image size
                 ,0,0,480,640
                 // view side
-                ,0,0,(48 * 5),(32* 5)
+                ,0,20,(48 * 6),(32* 3)
                 //,20,0,imgItem.h,imgItem.w
                 //,(imgItem.w*imgItem.m),(imgItem.h*imgItem.m)
                 //,yoImg.naturalWidth ,yoImg.naturalHeight /2
