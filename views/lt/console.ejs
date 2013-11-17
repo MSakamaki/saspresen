@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="console">
+<html lang="en" ng-app="consoleAPP">
 <head>
 	<meta charset="UTF-8">
 	<title></title>
@@ -8,9 +8,11 @@
 
 <!--  http://smoothiecharts.org/ -->
 	<script type="text/javascript" src="js/smoothie.js"></script>
-	<script type="text/javascript" src="js/angular.min.js"></script>
-	<script type="text/javascript" src="js/control.js"></script>
+
+	<script type="text/javascript" src="/bower_components/angular/angular.js"></script>
 	<script type="text/javascript" src="js/app.js"></script>
+	<script type="text/javascript" src="js/control.js"></script>
+
 </head >
 <!--body onload="createTimeline()" -->
 <body>
@@ -26,7 +28,9 @@
 	<br />
 	<div class="fbtn" ng-click="he()">さんぷるへぇ</div>
 	<br />
+	<div class="fbtn" ng-click="presen()">PRESEN</div>
 	<div class="fbtn" ng-click="endroll()">エンドロール開始</div>
+	<div class="fbtn" ng-click="chart()">CHART</div>
 	<br />
 </div>
 	<canvas id="chrt" width="1000px"></canvas>

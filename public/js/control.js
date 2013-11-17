@@ -1,4 +1,6 @@
-function consoleCtrl($scope, $http, wsFact, wsGrph){
+
+angular.module('consoleAPP',['WebSocketFactory'])
+    .controller('consoleCtrl', function($scope, $http, wsFact, wsGrph){
 	$scope.section=0;
 	$scope.graph=new TimeSeries();
 	$scope.heCnt=0;
@@ -29,13 +31,7 @@ function consoleCtrl($scope, $http, wsFact, wsGrph){
 		});
 	};
 	angular.element(document).ready(function(){
-	//$scope.mkchrt=function(){
-		//console.log('mkchrt');
-		//var random = new TimeSeries();
-		//setInterval(function() {
-		//	random.append(new Date().getTime(), Math.random() * 10000);
-		//}, 500);
-		setInterval(function() { 
+		setInterval(function() {
 			$scope.graph.append(new Date().getTime(), $scope.heCnt); 
 		}, 1000);
 		var chart = new SmoothieChart();
@@ -60,11 +56,17 @@ function consoleCtrl($scope, $http, wsFact, wsGrph){
 	$scope.reset=function(){
 		send('reset');
 	}
+    $scope.presen=function(){
+        send('presen');
+    }
 	$scope.endroll=function(){
 		send('endroll');
 	}
+    $scope.chart=function(){
+        send('chart');
+    }
 	$scope.he=function(){
 		send('he');
 	}
-}
+});
 

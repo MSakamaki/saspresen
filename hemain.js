@@ -39,53 +39,80 @@ server.on('connection', function(socket) {
 		var data = JSON.parse(data);
 		if (data.type == 'hepush'){
 			cntUp();// 評価カウントアップ
-			server.clients.forEach(function(client) {
-				if ( client ) {
-					try{
-						client.send(JSON.stringify({ type : 'view', hCnt : cnt.he }));
-					}catch(e){
-						console.log('err:' + e);
-					}
-				}});
+
+            allClientSends({ type : 'view', hCnt : cnt.he });
+//            server.clients.forEach(function(client) {
+//				if ( client ) {
+//					try{
+//						client.send(JSON.stringify({ type : 'view', hCnt : cnt.he }));
+//					}catch(e){
+//						console.log('err:' + e);
+//					}
+//				}});
 		} else if (data.type == 'console'){
 			/* console mode */
-			var dtt=data.ctrl;
-			switch(data.ctrl){
-				case 'next':
-				case 'prev':
-					data.ctrl=='next'?section++:section--;
-					cnt.sect=0;
-					server.clients.forEach(function(client) {
-						if ( client ) {
-							try{
-								client.send(JSON.stringify({ type : 'controller', sect : section }));
-							}catch(e){
-								console.log('err:' + e);
-							}
-						}
-					});
-					break;
-				case 'reset':
-					cnt.he=0;
-					cnt.sect=0;
-					break;
-				case 'he':
-					cntUp();
-					break;
-				case 'endroll':
-					console.log('TODO mizissou');
-					break;
-				default:
-					break;
-			}
+            consoleAction(data);
 		}
 	});
 });
+
+var consoleAction = function(data){
+    switch(data.ctrl){
+        case 'next':
+        case 'prev':
+            data.ctrl=='next'?section++:section--;
+            cnt.sect=0;
+            /*
+            clientAction(server.client)
+            server.clients.forEach(function(client) {
+                if ( client ) {
+                    try{
+                        client.send(JSON.stringify({ type : 'controller', sect : section }));
+                    }catch(e){
+                        console.log('err:' + e);
+                    }
+                }
+            });*/
+            allClientSends({ type : 'controller', sect : section });
+            break;
+        case 'reset':
+            cnt.he=0;
+            cnt.sect=0;
+            deleteAllGdata();
+            break;
+        case 'he':
+            cntUp();
+            break;
+        case 'presen':
+            allClientSends({ type : 'ctrl', mode : 'presen' });
+            break;
+        case 'endroll':
+            allClientSends({ type : 'ctrl', mode : 'endroll' });
+            break;
+        case 'chart':
+            allClientSends({ type : 'ctrl', mode : 'chart' });
+        default:
+            break;
+    }
+}
+
 var cntUp=function(){
 	cnt.sect++;
 	cnt.he++;
 	heUpd(section, cnt.sect);
 };
+
+var allClientSends= function(sendData){
+    server.clients.forEach(function(client) {
+        if ( client ) {
+            try{
+                client.send(JSON.stringify(sendData));
+            }catch(e){
+                console.log('err:' + e);
+            }
+        }
+    });
+}
 
 /*　ここからサーバー */
 var app = express();
@@ -167,6 +194,11 @@ var getGdata=function(fnc){
 	model.find({}, function(err, item){
 		fnc(item);
 	});
+}
+var deleteAllGdata=function(){
+    model.remove({}, function(err){
+        console.log('err:', err);
+    });
 }
 
 /* REST module*/

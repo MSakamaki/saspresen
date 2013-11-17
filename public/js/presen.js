@@ -6,7 +6,12 @@ $(document).ready(function() {
 	var emitter;        // the emitter
 	var fpsLabel;       // label to show the current frames per second
 	var particleImage;  // the image to use for each particle
-	
+
+    var iframesrcs={
+        presen : "https://docs.google.com/presentation/d/15957TLKdDL9q0aPI-xSmrRNkCLXzVAIbU1FAMC6V3co/embed?start=false&loop=false&delayms=60000",
+        chart : "/chart",
+        endroll : "/endroll"
+    };
 
 	var _ip = 'host';
 	var ws;
@@ -14,13 +19,34 @@ $(document).ready(function() {
 		ws = new WebSocket('ws://' + data[0].server + ':' + data[0].port + '/');
 		ws.onmessage = function (event) {
 			var data = JSON.parse(event.data);
+            console.log(data);
 			if (data.type == 'view') {
 				var base = document.getElementById('lblA');
 				base.innerHTML = data.hCnt;
 				addParticleEmitter(canvas.width / 2, canvas.height * 3 / 4);
 				ctHee.drawImage(hesImg, 0, 0);
 				setTimeout(hemoto, 500);
-			} 
+			} else if(data.type=='ctrl'){
+                console.log('before',$('#viewFrame').attr('src'));
+                switch(data.mode){
+                    case 'presen':
+                        console.log('mode presen',data.mode, iframesrcs.presen);
+                        $('#viewFrame').attr('src',iframesrcs.presen);
+                        break;
+                    case 'chart':
+                        console.log('mode chart',data.mode, iframesrcs.chart);
+                        $('#viewFrame').attr('src',iframesrcs.chart);
+                        break;
+                    case 'endroll':
+                        console.log('mode endroll',data.mode, iframesrcs.endroll);
+                        $('#viewFrame').attr('src',iframesrcs.endroll);
+                        break;
+                    default:
+                        $('#viewFrame').attr('src',iframesrcs.presen);
+                        break;
+                }
+                console.log('after',$('#viewFrame').attr('src'));
+            }
 		};
 
 		$("#btnReset").bind("click", function() {

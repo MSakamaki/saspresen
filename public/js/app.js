@@ -1,4 +1,4 @@
-angular.module('console', [])
+angular.module('WebSocketFactory', [])
 	.factory('wsFact', function(){
 		var service = {};
 		console.log('angular ws ');

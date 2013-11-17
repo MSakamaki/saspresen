@@ -65,8 +65,13 @@
 									var jitem = JSON.parse(item);
 									gdata[0].push(['section' + jitem.sect, jitem.point]);
 								});
-
-								$scope.someData = gdata;
+								console.log(gdata[0].length);
+								if (gdata[0].length !== 0){
+									$scope.someData = gdata;
+									console.log('refresh');
+								}else{
+									console.log('NO refresh');
+								}
 							}).
 							error(function(data, status, headers, config) {
 								console.log('error',data, status, headers, config);

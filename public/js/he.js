@@ -1,10 +1,27 @@
 var hEvent = {
 	ws : null,
+    imgItem : undefined,
+    imgSet : undefined,
 	init : function(server, port) {
 		$.get('conf/conf.json',function(data){
 			ws = new WebSocket('ws://' + data[0].server + ':' + data[0].port + '/');
 		});
-},
+        imgSet=[
+            {img:'img/conoha.jpg',msg:'VPS is From now very fun!'},  // 0
+            {img:'img/anzu.jpg',msg:'VPS is From now very fun!'},    // 1
+            {img:'img/yoda.jpg',msg:'Don\'t think... feel...'},    // 2
+            {img:'img/cloudia.jpg',msg:'Azure is cloud platform',msg2:'built for you.'}, // 3
+            {img:'img/fox.png',msg:'firefoxOS for best of',msg2:' the mobile web'},     // 4
+            {img:'img/grunt.png',msg:'I  JavaScript Task Runner'},   // 5
+            {img:'img/wm.png',msg:'I am Web Matrix man !!'},      // 6
+            {img:'img/yeoman-003.png',msg:'modern workflows',msg2:'for modern webapps!'}
+        ];
+        console.log(imgSet);
+        var idx = Math.floor( Math.random() * imgSet.length);
+        console.log(idx);
+        imgItem = imgSet[ idx ];
+        console.log(imgItem);
+    },
 	setMousEvent : function(btnId){
 		var btn = $(btnId);
 		btn.bind('vmousedown', function(){
@@ -30,18 +47,33 @@ var hEvent = {
 		//btn.width($(window).width());
 		//btn.height($(window).height());
 		var yoImg = new Image();
-		yoImg.src='img/yoda.jpg';
+		yoImg.src=imgItem.img;
 		var refresh = function(){
+            btn.width($(window).width());
+            btn.height($(window).height());
+
+            ctHee.fillStyle = "#FFFFFF";
+            ctHee.fillRect(0,0,$(window).width(),$(window).height());
+            //console.log('imgset', yoImg);
+
 			ctHee.drawImage(yoImg
-				,0,0,yoImg.naturalWidth ,yoImg.naturalHeight /2 
+				// image size
+                ,0,40,480,640
+                // view side
+                ,0,0,(48 * 5),(64* 5)
+                //,20,0,imgItem.h,imgItem.w
+                //,(imgItem.w*imgItem.m),(imgItem.h*imgItem.m)
+                //,yoImg.naturalWidth ,yoImg.naturalHeight /2
 				//,0,0,yoImg.naturalHeight,yoImg.naturalWidth
 				//,0,0,$(window).width() / 5 ,$(window).height() / 5
 				);
-				btn.width($(window).width());
-				btn.height($(window).height());
 		}
 		var pushHe =function(){
-			ctHee.fillText('フォースじゃ・・・', 10, ($(window).width() / 25));
+            ctHee.fillStyle = "#000000";
+			ctHee.fillText(imgItem.msg, 10, ($(window).width() / 25));
+            if (imgItem.msg2){
+                ctHee.fillText(imgItem.msg2, 10, ($(window).width() / 25) + 10);
+            }
 			setTimeout(refresh,1000);
 		}
 		yoImg.onload=refresh;
