@@ -49,8 +49,8 @@ var hEvent = {
 		var yoImg = new Image();
 		yoImg.src=imgItem.img;
 		var refresh = function(){
-            btn.width($(window).width());
-            btn.height($(window).height());
+            //btn.width($(window).width());
+            //btn.height($(window).height());
 
             console.log('wsize', $(window).width(), $(window).height());
             ctHee.fillStyle = "#FFFFFF";
@@ -61,7 +61,8 @@ var hEvent = {
 				// image size
                 ,100,0,480,640
                 // view side
-                ,0,10,(48 * 12),(32* 6)
+                ,0,0,48*5,64*5
+				//,0,10,(48 * 12),(32* 6)
                 //,20,0,imgItem.h,imgItem.w
                 //,(imgItem.w*imgItem.m),(imgItem.h*imgItem.m)
                 //,yoImg.naturalWidth ,yoImg.naturalHeight /2
@@ -71,9 +72,10 @@ var hEvent = {
 		}
 		var pushHe =function(){
             ctHee.fillStyle = "#000000";
-			ctHee.fillText(imgItem.msg, 10, ($(window).width() / 25));
+			ctHee.font = "18px 'ＭＳ Ｐゴシック'";
+			ctHee.fillText(imgItem.msg, 10, ($(window).width() / 25)+10 );
             if (imgItem.msg2){
-                ctHee.fillText(imgItem.msg2, 10, ($(window).width() / 25) + 10);
+                ctHee.fillText(imgItem.msg2, 10, ($(window).width() / 25) + 35);
             }
 			setTimeout(refresh,1000);
 		}
