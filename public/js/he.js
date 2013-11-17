@@ -14,7 +14,7 @@ var hEvent = {
             {img:'img/fox.png',msg:'firefoxOS for best of',msg2:' the mobile web'},     // 4
             {img:'img/grunt.png',msg:'I  JavaScript Task Runner'},   // 5
             {img:'img/wm.png',msg:'I am Web Matrix man !!'},      // 6
-            {img:'img/yeoman-003.png',msg:'modern workflows',msg2:'for modern webapps!'}
+            {img:'img/yeoman-003.png',msg:'modern workflows for modern webapps!'}
         ];
         console.log(imgSet);
         var idx = Math.floor( Math.random() * imgSet.length);
@@ -52,15 +52,16 @@ var hEvent = {
             btn.width($(window).width());
             btn.height($(window).height());
 
+            console.log('wsize', $(window).width(), $(window).height());
             ctHee.fillStyle = "#FFFFFF";
             ctHee.fillRect(0,0,$(window).width(),$(window).height());
             //console.log('imgset', yoImg);
 
 			ctHee.drawImage(yoImg
 				// image size
-                ,0,40,480,640
+                ,0,0,480,640
                 // view side
-                ,0,0,(48 * 5),(64* 5)
+                ,0,0,(48 * 5),(32* 5)
                 //,20,0,imgItem.h,imgItem.w
                 //,(imgItem.w*imgItem.m),(imgItem.h*imgItem.m)
                 //,yoImg.naturalWidth ,yoImg.naturalHeight /2
