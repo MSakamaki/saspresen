@@ -59,9 +59,9 @@ var hEvent = {
 
 			ctHee.drawImage(yoImg
 				// image size
-                ,0,0,480,640
+                ,100,0,480,640
                 // view side
-                ,0,20,(48 * 6),(32* 3)
+                ,0,10,(48 * 12),(32* 6)
                 //,20,0,imgItem.h,imgItem.w
                 //,(imgItem.w*imgItem.m),(imgItem.h*imgItem.m)
                 //,yoImg.naturalWidth ,yoImg.naturalHeight /2
