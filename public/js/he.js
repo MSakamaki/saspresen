@@ -14,7 +14,7 @@ var hEvent = {
             {img:'img/fox.png',msg:'firefoxOS for best of',msg2:' the mobile web'},     // 4
             {img:'img/grunt.png',msg:'I  JavaScript Task Runner'},   // 5
             {img:'img/wm.png',msg:'I am Web Matrix man !!'},      // 6
-            {img:'img/yeoman-003.png',msg:'modern workflows for modern webapps!'}
+            {img:'img/yeoman-003.png',msg:'modern workflows ',msg2:'for modern webapps!'}
         ];
         console.log(imgSet);
         var idx = Math.floor( Math.random() * imgSet.length);
