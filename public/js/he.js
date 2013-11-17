@@ -49,8 +49,8 @@ var hEvent = {
 		var yoImg = new Image();
 		yoImg.src=imgItem.img;
 		var refresh = function(){
-            //btn.width($(window).width());
-            //btn.height($(window).height());
+            btn.width($(window).width());
+            btn.height($(window).height());
 
             console.log('wsize', $(window).width(), $(window).height());
             ctHee.fillStyle = "#FFFFFF";
@@ -59,7 +59,7 @@ var hEvent = {
 
 			ctHee.drawImage(yoImg
 				// image size
-                ,100,0,480,640
+                ,50,0,480,640
                 // view side
                 ,0,0,48*5,64*5
 				//,0,10,(48 * 12),(32* 6)
@@ -72,10 +72,10 @@ var hEvent = {
 		}
 		var pushHe =function(){
             ctHee.fillStyle = "#000000";
-			ctHee.font = "18px 'ＭＳ Ｐゴシック'";
-			ctHee.fillText(imgItem.msg, 10, ($(window).width() / 25)+10 );
+			ctHee.font = "14px 'ＭＳ Ｐゴシック'";
+			ctHee.fillText(imgItem.msg, 10, ($(window).width() / 25) );
             if (imgItem.msg2){
-                ctHee.fillText(imgItem.msg2, 10, ($(window).width() / 25) + 35);
+                ctHee.fillText(imgItem.msg2, 10, ($(window).width() / 25) + 20);
             }
 			setTimeout(refresh,1000);
 		}
