@@ -8,7 +8,8 @@ $(document).ready(function() {
 	var particleImage;  // the image to use for each particle
 
     var iframesrcs={
-        presen : "https://docs.google.com/presentation/d/15957TLKdDL9q0aPI-xSmrRNkCLXzVAIbU1FAMC6V3co/embed?start=false&loop=false&delayms=60000",
+        //presen : "https://docs.google.com/presentation/d/15957TLKdDL9q0aPI-xSmrRNkCLXzVAIbU1FAMC6V3co/embed?start=false&loop=false&delayms=60000",
+        presen : 'https://docs.google.com/presentation/d/1Iu7t6hl9Zs4Lah7QsLhjMDCDX9ADumRr8DsuaYFWQzQ/embed?start=false&loop=false&delayms=3000',
         chart : "/chart",
         endroll : "/endroll"
     };

@@ -61,7 +61,7 @@ var hEvent = {
 				// image size
                 ,50,0,480,640
                 // view side
-                ,0,0,48*5,64*5
+                //,0,0,48*5,64*5
 				//,0,10,(48 * 12),(32* 6)
                 //,20,0,imgItem.h,imgItem.w
                 //,(imgItem.w*imgItem.m),(imgItem.h*imgItem.m)

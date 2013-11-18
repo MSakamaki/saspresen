@@ -14,6 +14,7 @@ var serverInfo ={
 	port : '80'
 };
 
+
 /* websocket関係 
 var secCnt=0;
 var heCount=0;*/
