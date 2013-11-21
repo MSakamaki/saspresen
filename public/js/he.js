@@ -62,17 +62,11 @@ var hEvent = {
                 ,50,0,480,640
                 // view side
                 //,0,0,48*5,64*5
-				//,0,10,(48 * 12),(32* 6)
-                //,20,0,imgItem.h,imgItem.w
-                //,(imgItem.w*imgItem.m),(imgItem.h*imgItem.m)
-                //,yoImg.naturalWidth ,yoImg.naturalHeight /2
-				//,0,0,yoImg.naturalHeight,yoImg.naturalWidth
-				//,0,0,$(window).width() / 5 ,$(window).height() / 5
 				);
 		}
 		var pushHe =function(){
             ctHee.fillStyle = "#000000";
-			ctHee.font = "14px 'ＭＳ Ｐゴシック'";
+			ctHee.font = "24px 'ＭＳ Ｐゴシック'";
 			ctHee.fillText(imgItem.msg, 10, ($(window).width() / 25) );
             if (imgItem.msg2){
                 ctHee.fillText(imgItem.msg2, 10, ($(window).width() / 25) + 20);

@@ -7,7 +7,7 @@ angular.module('consoleAPP',['WebSocketFactory'])
 	wsFact.subscribe(function(msg){
 		var data = JSON.parse(msg);
 		console.log('subscribe ctrl fact:',msg, data);
-		if(data.sect){$scope.section=data.sect;}
+		if(data.name){$scope.section=data.name;}
 		if(data.type=='view'){
 			$scope.heCnt=data.hCnt;
 		}

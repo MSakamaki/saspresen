@@ -8,8 +8,8 @@ $(document).ready(function() {
 	var particleImage;  // the image to use for each particle
 
     var iframesrcs={
-        //presen : "https://docs.google.com/presentation/d/15957TLKdDL9q0aPI-xSmrRNkCLXzVAIbU1FAMC6V3co/embed?start=false&loop=false&delayms=60000",
-        presen : 'https://docs.google.com/presentation/d/1Iu7t6hl9Zs4Lah7QsLhjMDCDX9ADumRr8DsuaYFWQzQ/embed?start=false&loop=false&delayms=3000',
+        presen : "https://docs.google.com/presentation/d/15957TLKdDL9q0aPI-xSmrRNkCLXzVAIbU1FAMC6V3co/embed?start=false&loop=false&delayms=60000",
+        //presen : 'https://docs.google.com/presentation/d/1Iu7t6hl9Zs4Lah7QsLhjMDCDX9ADumRr8DsuaYFWQzQ/embed?start=false&loop=false&delayms=3000',
         chart : "/chart",
         endroll : "/endroll"
     };
@@ -24,8 +24,16 @@ $(document).ready(function() {
 			if (data.type == 'view') {
 				var base = document.getElementById('lblA');
 				base.innerHTML = data.hCnt;
-				addParticleEmitter(canvas.width / 2, canvas.height * 3 / 4);
+				//addParticleEmitter(canvas.width / 2, canvas.height * 3 / 4);
+
 				ctHee.drawImage(hesImg, 0, 0);
+
+	          	ctHee.fillStyle = "#000000";
+				ctHee.font = "20px 'ＭＳ Ｐゴシック'";
+				var xh = Math.floor( Math.random() * 30) +  5,
+					xy = Math.floor( Math.random() * 30) + 15;
+				ctHee.fillText("へぇ～", xh, xy );
+
 				setTimeout(hemoto, 500);
 			} else if(data.type=='ctrl'){
                 console.log('before',$('#viewFrame').attr('src'));

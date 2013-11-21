@@ -15,6 +15,28 @@ var serverInfo ={
 };
 
 
+var sesName = [
+    " 0:START", // 1
+    " 1:知っていますか？今時のセキュリティ事情", // 1
+    " 2:はじめに～講習の目的・受講にあたって", // 
+    " 3:IPA １０大脅威とは？", // 
+    " 4:第10位", // 
+    " 5:第9位", // 
+    " 6:第8位", // 
+    " 7:第7位", // 
+    " 8:第6位", // 
+    " 9:第5位", // 
+    "10:第4位", // 
+    "11:第3位", // 
+    "12:第2位", // 
+    "13:第1位", // 
+    "14:というわけで", // 
+    "15:セキュリティシミュレーション(説明)", // 
+    "16:セキュリティシミュレーション(実践中)", // 
+    "17:おわりに",
+    "18:END" // 1
+];
+
 /* websocket関係 
 var secCnt=0;
 var heCount=0;*/
@@ -74,7 +96,11 @@ var consoleAction = function(data){
                     }
                 }
             });*/
-            allClientSends({ type : 'controller', sect : section });
+            allClientSends({ 
+                type : 'controller', 
+                sect : section ,
+                name : sesName[section]
+            });
             break;
         case 'reset':
             cnt.he=0;
@@ -215,9 +241,14 @@ restServer.use(
 restServer.get('/g', function(req, res, next){
     getGdata(function(_data){
         var data =[];
+        var idx=0;
         _data.forEach(function(item){
             if (item.sect){
-                data.push(JSON.stringify({ point :item.point, sect : item.sect }));
+                data.push(JSON.stringify({ 
+                      point :item.point
+                    , sect : item.sect 
+                    , name : sesName[item.sect]
+                }));
             }
         });
         //console.log('data:',data);

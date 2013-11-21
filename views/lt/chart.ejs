@@ -16,7 +16,19 @@
 </head >
 <body>
 <section ng-app="myChartingApp" ng-controller="DemoCtrl">
-	<div ui-chart="someData" chart-options="myChartOpts" ></div>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+	<!--<div ui-chart="someData" chart-options="myChartOpts" ></div>-->
 	<div ui-chart="someData" chart-options="myBarObts" ></div>
 </section>
 
@@ -24,7 +36,7 @@
 	angular.module('myChartingApp', ['ui.chart'])
 			.config(function($httpProvider){
 				delete $httpProvider.defaults.headers.common['X-Requested-With'];
-			}).value('charting', {
+			}).value('charting', {/*
 				pieChartOptions: {
 					seriesDefaults: {
 						renderer: jQuery.jqplot.PieRenderer,
@@ -33,7 +45,7 @@
 						}
 					},
 					legend: { show:true, location: 'e' }
-				},
+				},*/
 				barChartOptions: {
 					seriesDefaults: {
 						renderer: jQuery.jqplot.BarRenderer,
@@ -44,7 +56,7 @@
 					axesDefaults: {
 						tickRenderer: $.jqplot.CanvasAxisTickRenderer ,
 						tickOptions: {
-							angle: 0,
+							angle: 20,
 							fontSize: '10pt'
 						}
 					},
@@ -63,9 +75,9 @@
 								var gdata = [[]];
 								data.forEach(function(item){
 									var jitem = JSON.parse(item);
-									gdata[0].push(['section' + jitem.sect, jitem.point]);
+									gdata[0].push([jitem.name, jitem.point]);
 								});
-								console.log(gdata[0].length);
+								console.log(data);
 								if (gdata[0].length !== 0){
 									$scope.someData = gdata;
 									console.log('refresh');
